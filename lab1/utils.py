@@ -10,7 +10,7 @@ if sys.version[0]=='2':
 elif sys.version[0]=='3':
     VERSION = 3
     from collections import UserDict
-    import regex as re
+    import re
     # print("3")
 
 

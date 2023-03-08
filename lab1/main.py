@@ -2,20 +2,12 @@
 # from rules import my_rules
 
 
+
 if __name__=='__main__':
+    from production import *
+    from rules import TOURIST_RULES, TOURIST_DATA
 
-    #TODO: implement your code here!
-    
-    # example how to print output:
-    print("Welcome to Expert System! TODO: implement")
-
-    # an example how to read input:
-    input_name = input("please write your name:\n")
-
-    print("Hello, ", input_name, "!")
-
-    # example how to read a numeric input:
-    input_age = int(input("what is your age?\n"))
-    print("Your age is", input_age)
-
-    print("Great! Now please implement the code for the lab :) ")
+    print('FW Chain:')
+        
+    from rules_example_zookeeper import ZOO_DATA, ZOOKEEPER_RULES
+    forward_chain(ZOOKEEPER_RULES, ZOO_DATA, apply_only_one=True)

@@ -4,7 +4,7 @@ if sys.version[0]=='2':
     import re
   
 elif sys.version[0]=='3':
-    import regex as re
+    import re
 
 from utils import *
 
@@ -29,7 +29,7 @@ except NameError:
 ### >>> import production
 ### >>> help(production)
 
-def forward_chain(rules, data, apply_only_one=False, verbose=False):
+def forward_chain(rules, data, apply_only_one=False, verbose=True):
     """
     Apply a list of IF-expressions (rules) through a set of data
     in order.  Return the modified data set that results from the
