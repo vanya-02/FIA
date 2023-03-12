@@ -9,41 +9,38 @@ TOURIST_RULES = (
 
     # 1
     IF(
-        AND('Uses a VPN', 'Uses public Wi-Fis'),
-        THEN('Tourist type 1, the broke one')
+        AND('(?x) uses a vpn', '(?x) uses public wifi'),
+        THEN('(?x) is Tourist type 1, the broke one')
     ),
     # 2 
     IF(
-        AND('Visits museums', 'Takes pictures, a LOT of pictures; 10pics/hour'),
-        THEN('Tourist type 2, the cultured one')
+        AND('(?x) visits museums', '(?x) takes pictures, a LOT of pictures; 10pics/hour'),
+        THEN('(?x) is Tourist type 2, the cultured one')
     ),
     # 3
     IF(
-       AND('Has accent', 'Doesnt speak luna'),
-       THEN('Tourist type 3, the foreigner') 
+       AND('(?x) has accent', '(?x) doesnt speak luna'),
+       THEN('(?x) Tourist type 3, the foreigner') 
     ),
     # 4
     IF(
-        AND('Came out of an airport', 'Took the first waiting taxi'),
-        THEN('Tourist tytpe 4, the newbie')
+        AND('(?x) came out of an airport', '(?x) took the first waiting taxi'),
+        THEN('(?x) is Tourist tytpe 4, the newbie')
     ),
     # 5
     IF(
         AND(
-            OR('Has sunglasses', 'Has Hawaii t-shirts'), # -> on vacation
-            'Stays at a hotel'
+            OR('(?x) has sunglasses', '(?x) has hawaii t-shirts'), # -> on vacation
+            '(?x) stays at a hotel'
         ),
-        THEN('Tourist type 5, the archetype')
+        THEN('(?x) is Tourist type 5, the archetype')
     )
 )
 
 
 TOURIST_DATA = (
-    'tim has feathers',
-    'tim is a good flyer',
-    'mark flies',
-    'mark does not fly',
-    'mark lays eggs',
-    'mark swims',
-    'mark has black and white color',
+    'ion uses a vpn',
+    'ion uses public wifi',
+    'ion has sunglasses',
+    'ion has hawaii t-shirts'
 )

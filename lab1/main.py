@@ -4,10 +4,12 @@
 
 
 if __name__=='__main__':
-    from production import *
+    from production import forward_chain
     from rules import TOURIST_RULES, TOURIST_DATA
 
-    print('FW Chain:')
+    print('FW Chain:\n')
         
     from rules_example_zookeeper import ZOO_DATA, ZOOKEEPER_RULES
-    forward_chain(ZOOKEEPER_RULES, ZOO_DATA, apply_only_one=True)
+    res = forward_chain(TOURIST_RULES, TOURIST_DATA, apply_only_one=False)
+    print(res)
+
