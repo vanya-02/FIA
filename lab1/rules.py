@@ -42,5 +42,12 @@ TOURIST_DATA = (
     'ion uses a vpn',
     'ion uses public wifi',
     'ion has sunglasses',
-    'ion has hawaii t-shirts'
+    'ion has hawaii t-shirts',
+    'ion stays at a hotel',
+
+    'maria uses a vpn',
+    'maria uses public wifi',
+    'maria has sunglasses',
+    'maria has hawaii t-shirts',
+    'maria stays at a hotel'
 )

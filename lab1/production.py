@@ -41,6 +41,9 @@ def forward_chain(rules, data, apply_only_one=False, verbose=True):
     making the code considerably more efficient. In the end, only
     DELETE rules will act differently.
     """
+    # print(f"rules: {rules}\ndata: {data}")
+
+
     old_data = ()
 
     while set(old_data) != set(data):
@@ -58,9 +61,18 @@ def backward_chain(rules, hypothesis, verbose=False):
     Outputs the goal tree from having rules and hyphothesis, works like an "encyclopedia"
     """
 
-    # TODO: you should implement backward_chain algorithm here
 
-    return "TODO: implement backward_chain" #change return
+    if list_rules is None:
+        list_rules = []
+
+    for rule in rules:
+        match_res = match(rule.consequent()[0], hypothesis)
+        if match_res:
+            list_rules.append(rule.antecedent())
+            for antecedent in rule.antecedent():
+                hypothesis = populate(antecedent, match_res)
+                backward_chain(rules, hypothesis, list_rules, verbose)
+    return list_rules
 
 
 def instantiate(template, values_dict):
