@@ -1,5 +1,8 @@
-# Mini-Project 8: RiceRocks
-# On less performant computers the game may perform slower
+# CodeSkulptor runs Python programs in your browser.
+# Click the upper left button to run this simple demo.
+
+# CodeSkulptor is tested to run in recent versions of
+# Chrome, Firefox, Safari, and Edge.
 
 import simplegui
 import math
