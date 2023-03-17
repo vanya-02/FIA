@@ -56,7 +56,7 @@ def forward_chain(rules, data, apply_only_one=False, verbose=True):
     return data
 
 
-def backward_chain(rules, hypothesis, verbose=False):
+def backward_chain(rules, hypothesis, list_rules=None, verbose=False):
     """
     Outputs the goal tree from having rules and hyphothesis, works like an "encyclopedia"
     """
@@ -112,6 +112,8 @@ def match(template, AIStr):
                          AIStr ).groupdict()
     except AttributeError: # The re.match() expression probably
                            # just returned None
+        return None
+    except:
         return None
 
 def is_variable(str):
