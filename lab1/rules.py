@@ -37,6 +37,25 @@ TOURIST_RULES = (
     )
 )
 
+possible_facts = [
+    '(?x) has sunglasses', '(?x) has hawaii t-shirts',
+    '(?x) stays at a hotel', '(?x) came out of an airport', '(?x) took the first waiting taxi',
+    '(?x) has accent', '(?x) doesnt speak luna', '(?x) visits museums', '(?x) takes pictures, a LOT of pictures; 10pics/hour',
+    '(?x) uses a vpn', '(?x) uses public wifi'
+]
+
+then_conclusions = [
+    '(?x) is Tourist type 1, the broke one',
+    '(?x) is Tourist type 2, the cultured one',
+    '(?x) Tourist type 3, the foreigner',
+    '(?x) is Tourist tytpe 4, the newbie',
+    '(?x) is Tourist type 5, the archetype'
+]
+
+
+rules = [
+    AND(OR('(?x) has sunglasses', '(?x) has hawaii t-shirts'), '(?x) stays at a hotel')]
+
 
 TOURIST_DATA = (
     'ion uses a vpn',
