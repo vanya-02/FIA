@@ -5,11 +5,7 @@ class Vector:
     def __init__(self, arr=None):
         if arr is None:
             arr = []
-        else:
-            self.vec = arr
-
-        self.pos = [pos[0], pos[1]]
-        self.vel = [vel[0], vel[1]]
+        self.vec = arr
 
     def norm(self):
         return math.sqrt(sum(x ** 2 for x in self.vec))
@@ -45,46 +41,34 @@ class Vector:
 
 
 
-class Entities:
-    def __init__(self, pos, vel, ang):
-        self.pos = [pos[0], pos[1]]
-        self.vel = [vel[0], vel[1]]
-        self.angle = ang
-
-
-    def get_pos(self):
-        return self.pos
-
-    def get_ang(self):
-        return self.angle
-
-
 
 class Boid:
-    def __init__(self, entities):
-        self.entities = entities
-        self.position = Vector(entities.pos)
-        self.velocity = Vector(entities.vel)
+    def __init__(self, position_vector, velocity_vector=Vector([1,1])):
+        self.vectors = [position_vector, velocity_vector]
+        self.position = position_vector
+        self.velocity = velocity_vector
         self.radius = 100
         self.alignment_factor = 3.0
         self.separation_factor = 1.0
         self.cohesion_factor = 2.0
 
+        
+
     def get_proximity(self, other_boid):
         return abs(self.position - other_boid.position)
 
-    def flocking(self, sprite_group):
-        self.cohesion(sprite_group)
-        self.separation(sprite_group)
-        self.alignment(sprite_group)
+    def flocking(self, vector_group):
+        self.cohesion(vector_group)
+        self.separation(vector_group)
+        self.alignment(vector_group)
 
-    def alignment(self, sprite_group):
+    def alignment(self, vector_group):
         align_vec = Vector([0, 0])
         proximity_len = 0
-        for entities in sprite_group:
-            if self.entities == entities:
+        for vector in vector_group:
+            if self.vectors == vector:
                 continue
-            other_boid = Boid(entities)
+            other_boid = Boid(vector)
             proximity = self.get_proximity(other_boid)
             if proximity.vec[0] <= self.radius and proximity.vec[1] <= self.radius:
                 proximity_len += 1
@@ -98,14 +82,14 @@ class Boid:
             self.velocity += align_vec * self.alignment_factor
             self.velocity /= self.velocity.norm()
 
-    def separation(self, sprite_group):
+    def separation(self, vector_group):
         separation_vector = Vector([0, 0])
         proximity_len = 0
-        for entities in sprite_group:
-            if entities == self.entities:
+        for coordinates in vector_group:
+            if coordinates == self.vectors:
                 continue
 
-            other_boid = Boid(entities)
+            other_boid = Boid(coordinates)
             proximity = self.get_proximity(other_boid)
 
             if proximity.vec[0] <= self.radius and proximity.vec[1] <= self.radius:
@@ -119,15 +103,15 @@ class Boid:
             self.velocity += separation_vector * self.separation_factor
             self.velocity /= self.velocity.norm()
 
-    def cohesion(self, sprite_group):
+    def cohesion(self, vector_group):
         cohesion_vec = Vector([0, 0])
         proximity_len = 0
-        for entities in sprite_group:
+        for coordinates in vector_group:
 
-            if self.entities == entities:
+            if self.vectors == coordinates:
                 continue
 
-            other_boid = Boid(entities)
+            other_boid = Boid(coordinates)
             proximity = self.get_proximity(other_boid)
 
             if proximity.vec[0] <= self.radius and proximity.vec[1] <= self.radius:
@@ -142,3 +126,10 @@ class Boid:
             cohesion_vec -= self.position
             self.velocity += cohesion_vec * self.cohesion_factor
             self.velocity /= self.velocity.norm()
+
+
+
+boid = Boid(Vector([1,2]))
+boidz = [Vector([3,2]), Vector([3,4])] 
+
+boid.flocking(boidz)
