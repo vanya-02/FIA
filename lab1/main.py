@@ -1,18 +1,6 @@
 # TODO: add your imports here:
 # from rules import my_rules
 
-
-
-
-    
-
-    
-
-
-    
-
-
-
 if __name__=='__main__':
     from rules import *
     from production import *
