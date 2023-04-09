@@ -60,10 +60,11 @@ def backward_chain(rules, hypothesis, list_rules=None, verbose=False):
     """
     Outputs the goal tree from having rules and hyphothesis, works like an "encyclopedia"
     """
-
+    # if P implies Q, then P is called the antecedent and Q is called the consequent.
 
     if list_rules is None:
         list_rules = []
+
 
     for rule in rules:
         match_res = match(rule.consequent()[0], hypothesis)
